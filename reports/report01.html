@@ -5,6 +5,7 @@
     <title>20161047_이시은_과제01</title>
 </head>
 <body>
+
 <h2>취업 정보 계정 만들기</h2>
 <p></p>
 
@@ -12,8 +13,8 @@
 <p></p>
 
 <form>
-기본 정보
 
+기본 정보
 <p></p>
 
 이 름* <input type="text" maxlength="8" ><br>
@@ -24,30 +25,41 @@
 개인 홈페이지 <input type="url" placeholder="http://" maxlength="30"><br>
 주소* <input type="text" maxlength="30"><br>
 <p></p>
+
 학 력<br>
 <p></p>
+
 학교 명* <input type="text" maxlength="12"><br>
 전 공* <input type="text" maxlength="12"><br>
-졸업 여부* <select name="graduation" size="1">
-             <option value="null" selected>---선택---</option>
-             <option value="1">졸업예정</option>
-             <option value="2">졸업</option>
-         </select><br>
+졸업 여부*  <select name="graduation" size="1">
+              <option value="null" selected>---선택---</option>
+              <option value="1">졸업예정</option>
+              <option value="2">졸업</option>
+           </select><br>
 <p></p>
+
 졸업(예정)일 <input type="date" value="2022-01-01">
 <p></p>
+
 업무 경력
 <p></p>
+
 근무업체명 <input type="text" maxlength="20"><br>
 직 위 <input type="text" maxlength="10"><br>
 
-담당 업무 <textarea name="charge_of" cols="80" rows="10"><
-근무년수 <input>
+
+담당 업무 <textarea name="charge_of" cols="80" rows="10" placeholder="이전 업체에서 담당한 업무를 기술하시오."></textarea><br>
+근무년수 <input type="number" min="0" max="10" step="0.5">년<br>
 <p></p>
+
 자기소개서
 <p></p>
-첨부 파일
 
+첨부 파일 <input type="file" name="file_upload" value="파일 선택">
+<p></p>
+
+<input type="submit" name="submit" value="제 출">
+<input type="reset" name="reset" value="재작성">
 
 
 
