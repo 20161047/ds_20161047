@@ -5,6 +5,13 @@
     <title>20161047_이시은_과제01</title>
 
     <style>
+        .n2 {
+            font-weight: bold;
+            background-color: lightblue;
+            width: 800px;
+            padding: 0 0 0 10px;
+        }
+
 
     </style>
 
@@ -12,15 +19,13 @@
 <body>
 
 <h2>취업 정보 계정 만들기</h2>
-<p></p>
 
-* 필수 입력 항목
-<p></p>
+<p style="color: red; size: 10px;">* 필수 입력 항목</p>
 
 <form name="essential_form" method="post"> <!-- 사용자의 개인 정보가 있기 때문에, method 속성은 post로 해야한다. -->
 
-기본 정보
-<p></p>
+
+<p class="n2">기본 정보</p>
 
     <label>이 름* <input type="text" name="user_name" maxlength="8" size="10"></label><br>
     <label>이메일* <input type="email" name="user_email" placeholder="id@damain_name" maxlength="15" size="17"></label><br>
@@ -29,10 +34,8 @@
     <label>모바일 폰* <input type="tel" placeholder="010-0000-0000" maxlength="13" size="15"></label><br>
     <label>개인 홈페이지 <input type="url" placeholder="http://" maxlength="30" size="35"></label><br>
     <label>주소* <input type="text" name="user_address " maxlength="30" size="35"></label><br>
-    <p></p>
 
-학 력
-<p></p>
+<p class="n2">학 력</p>
 
      <label>학교 명* <input type="text" name="user_university" maxlength="12" size="15"></label><br>
      <label>전 공* <input type="text" name="user_major" maxlength="12" size="15"></label><br>
@@ -42,28 +45,24 @@
                             <option value="2">졸업</option>
                       </select></label><br>
      <label>졸업(예정)일 <input type="date" value="0000-00-00"></label>
-     <p></p>
 
-업무 경력
-<p></p>
+<p class="n2">업무 경력</p>
 
       <label>근무업체명 <input type="text" name="business" maxlength="20" size="30"></label><br>
       <label>직 위 <input type="text" name="position" maxlength="10" size="15"></label><br>
 
       <label>담당 업무 <textarea name="user_task" cols="80" rows="10" >이전 업체에서 담당한 업무를 기술하시오.</textarea></label><br>
       <label>근무년수 <input type="number" min="0" max="10" step="0.5">년</label><br>
-      <p></p>
 
-자기소개서
-<p></p>
+<p class="n2">자기소개서</p>
 
       <label>첨부 파일 <input type="file" name="file_upload" value="파일 선택"></label>
       <p></p>
 
 
 
-<button type="submit" class="b1" name="user_info_submit">제 출</button>
-<button type="reset" class="b2" name="reset">재작성</button>
+<button type="submit" name="user_info_submit">제 출</button>
+<button type="reset" name="reset">재작성</button>
 
 
 </form>
