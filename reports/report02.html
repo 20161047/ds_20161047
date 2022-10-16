@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>20161047_이시은_과제01</title>
 
     <style>
+        span {
+            color: red;
+        }
         #n1 {
             color: red;
             size: 10pt;
@@ -39,19 +42,20 @@
 
 <p class="n2">기본 정보</p>
 
-    <label class="n3">이 름<span style="color: red">*</span><input type="text" name="user_name" maxlength="8" size="10"></label><br>
-    <label class="n3">이메일<span style="color: red">*</span><input type="email" name="user_email" placeholder="id@damain_name" maxlength="15" size="17"></label><br>
-    <label class="n3">암호<span style="color: red">*</span><input type="password" name="user_password" maxlength="12" size="17"></label><br>
-    <label class="n3">암호 확인<span style="color: red">*</span><input type="password" name="user_password_confirm" maxlength="12" size="14"></label><br>
-    <label class="n3">모바일 폰<span style="color: red">*</span><input type="tel" placeholder="010-0000-0000" maxlength="13" size="15"></label><br>
-    <label class="n3">개인 홈페이지<input type="url" placeholder="http://" maxlength="30" size="35"></label><br>
-    <label class="n3">주소<span style="color: red">*</span><input type="text" name="user_address " maxlength="30" size="35"></label><br>
+    <label class="n3">이 름<span>*</span><input type="text" name="user_name" maxlength="8"></label><br>
+
+    <label class="n3">이메일<span>*</span><input type="email" name="user_email" placeholder="id@damain_name" maxlength="15"></label><br>
+    <label class="n3">암호<span>*</span><input type="password" name="user_password" maxlength="12"></label><br>
+    <label class="n3">암호 확인<span>*</span><input type="password" name="user_password_confirm" maxlength="12"></label><br>
+    <label class="n3">모바일 폰<span>*</span><input type="tel" placeholder="010-0000-0000" maxlength="13"></label><br>
+    <label class="n3">개인 홈페이지<input type="url" placeholder="http://" maxlength="30"></label><br>
+    <label class="n3">주소<span>*</span><input type="text" name="user_address " maxlength="30"></label><br>
 
 <p class="n2">학 력</p>
 
-     <label class="n3">학교 명<span style="color: red">*</span><input type="text" name="user_university" maxlength="12" size="15"></label><br>
-     <label class="n3">전 공<span style="color: red">*</span><input type="text" name="user_major" maxlength="12" size="15"></label><br>
-     <label class="n3">졸업 여부<span style="color: red">*</span><select name="user_graduation" size="1">
+     <label class="n3">학교 명<span>*</span><input type="text" name="user_university" maxlength="12"></label><br>
+     <label class="n3">전 공<span>*</span><input type="text" name="user_major" maxlength="12"></label><br>
+     <label class="n3">졸업 여부<span>*</span><select name="user_graduation" size="1">
                             <option value="null">---선택---</option>
                             <option value="1">졸업예정</option>
                             <option value="2">졸업</option>
@@ -60,8 +64,8 @@
 
 <p class="n2">업무 경력</p>
 
-      <label class="n3">근무업체명<input type="text" name="business" maxlength="20" size="30"></label><br>
-      <label class="n3">직 위<input type="text" name="position" maxlength="10" size="15"></label><br>
+      <label class="n3">근무업체명<input type="text" name="business" maxlength="20"></label><br>
+      <label class="n3">직 위<input type="text" name="position" maxlength="10"></label><br>
 
       <label class="n3">담당 업무<textarea name="user_task" cols="80" rows="10" >이전 업체에서 담당한 업무를 기술하시오.</textarea></label><br>
       <label class="n3">근무년수<input type="number" min="0" max="10" step="0.5">년</label><br>

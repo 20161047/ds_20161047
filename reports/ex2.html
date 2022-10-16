@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>20161047_이시은_과제01</title>
+
+    <style>
+      #n1 {
+        color: red;
+        size: 10px;
+      }
+      .n2 {
+        font-weight: bold;
+        background-color: lightblue;
+        width: 800px;
+        padding-left: 10px;
+      }
+      .n3 {
+        margin-left: 8px;
+        text-align: right;
+
+        padding-right: 8px;
+        display: inline-block;
+      }
+      span {
+        color: red;
+      }
+      .b {
+        margin-left: 200px;
+      }
+    </style>
+
+</head>
+<body>
+
+<h2>취업 정보 계정 만들기</h2>
+
+<p id="n1">* 필수 입력 항목</p>
+
+<form name="essential_form" method="post"> <!-- 사용자의 개인 정보가 있기 때문에, method 속성은 post로 해야한다. -->
+
+  <p class="n2">기본 정보</p>
+    <label class="n3">이 름 <input type="text" name="user_name" maxlength="8"></label><br>
+<span>*</span>
+</form>
+</body>
+</html>
