@@ -9,13 +9,9 @@
 
 	function report(bin) {
 
-        var bin = 1010;
-        var oct = 12;
-        var hex = 'a';
-        var b = parseInt(bin, 2);
-        var o = parseInt(oct, 8);
-        var h = parseInt(hex, 16);
-        document.write("바뀐 16진수는? " + ":" + " " + h);
+        var bin2 = parseInt(bin, 2).toString(16);
+
+        document.write("바뀐 16진수는? " + ":" + " " + bin2);
 
     }
 
