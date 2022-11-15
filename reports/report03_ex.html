@@ -6,23 +6,14 @@
 
 <script>
 
-
 	function report(bin) {
 
         var bin2 = parseInt(bin, 2).toString(16);
 
-        if (1111 != bin && 1011 != bin && 0111 != bin && 0011 != bin
-            && 1110 != bin && 1010 != bin && 0110 != bin && 0010 != bin
-            && 1101 != bin && 1001 != bin && 0101 != bin && 0001 != bin
-            && 1100 != bin && 1000 != bin && 0100 != bin && 0000 != bin)
-        {
-            document.write("당신이 입력한  " + "<b><mark>" + bin + "</mark></b>" + "  은" + " 2진수가 아닙니다. <br> 다시 입력하세요.");
-        } else {
 
-                     document.write("변환된 16진수는? " + ":" + " " + bin2);
-        }
 
-    }
+            document.write("변환된 16진수는? " + ":" + " " + bin2);}
+
 
 
 </script>
