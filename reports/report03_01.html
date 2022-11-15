@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20161047_이시은_과제03</title>
+
+<script>
+
+
+	function report(bin) {
+
+        var bin2 = parseInt(bin, 2).toString(16);
+
+        if (1111 != bin && 1011 != bin && 0111 != bin && 0011 != bin
+            && 1110 != bin && 1010 != bin && 0110 != bin && 0010 != bin
+            && 1101 != bin && 1001 != bin && 0101 != bin && 0001 != bin
+            && 1100 != bin && 1000 != bin && 0100 != bin && 0000 != bin)
+        {
+            document.write("당신이 입력한  " + "<b><mark>" + bin + "</mark></b>" + "  은" + " 2진수가 아닙니다. <br> 다시 입력하세요.");
+        } else {
+
+                     document.write("변환된 16진수는? " + ":" + " " + bin2);
+        }
+
+    }
+
+
+</script>
+<style>
+    div {
+        margin-top: 30px;
+    }
+
+</style>
+
+</head>
+<body>
+    <h3>JavaScript 함수 만들기</h3>
+    <hr>
+    <div>
+<script>
+
+var n = prompt("2진수를 입력하시면, 16진수로 바꾸겠습니다.", '0');
+report(n);
+
+</script>
+    </div>
+</body>
+</html>
