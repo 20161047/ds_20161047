@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <title>20161047_이시은_과제03_02</title>
 
+
+
+
+</head>
+<body>
+
 <script>
+
+    var n = prompt("파스칼의 삼각형의 높이", 0);
+    n = parseInt(n);
+    rowIndex = n;
 
     var getRow = function (rowIndex) {
         let row = [];
@@ -18,24 +28,15 @@
                 row[j] = row[j - 1] + row[j];
             }
             // 맨 마지막은 직접 넣어준다. i = 1인 경우 j for문은 타지 않음.
-            row.push(1);
+        row.push(1); // [1]
         }
+        var k = 0;
+        while (k <= n) {
+            document.write(row[k+1] + "<br>" + ); //만약 3을 집어넣으면, row에는 [1] [3] [3] [1]이 저장된다.
 
-        document.write(row + "<br>"); //만약 3을 집어넣으면, row에는 [1] [3] [3] [1]이 저장된다.
+        }
     }
-
-
-</script>
-
-
-</head>
-<body>
-
-<script>
-
-var z = prompt();
-getRow(z);
-
+getRow(n);
 
 </script>
 
