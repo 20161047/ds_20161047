@@ -5,9 +5,7 @@
     <title>20161047_이시은_과제03_02</title>
 
 <script>
-
     function new_row(prev_row){
-
         var pascal = [];
         var len = prev_row.length;
         pascal[0] = 1;
@@ -21,9 +19,8 @@
         }
         return pascal;
     }
-
     var defa = [1];
-    var dim = Number(prompt("파스칼 삼각형의 높이:", ""));
+    var dim = prev_row;
     document.write(defa);
 
     if (dim>=2){
@@ -47,7 +44,7 @@
 
 <script>
 
-var z = prompt();
+var z = prompt("파스칼의 삼각형의 높이 :", "");
 new_row(z);
 
 
