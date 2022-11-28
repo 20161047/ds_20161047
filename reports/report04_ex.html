@@ -32,23 +32,11 @@
             }
    }
 
-
-
-
-
-
-
-
-
-
-
-
-
         // id가 "size"인 입력 요소의 값을 읽어 해당 크기의 파스칼 삼각형을 id가 'draw_area'인 영역에
         // 그리는 기능의 함수
         function pascals() {
             var size = document.getElementById("size").value;
-
+                document.getElementById("draw_area").innerHTML =
 
                     function new_row(prev_row) {
                         var pascal = [];
@@ -67,16 +55,16 @@
 
                     var defa = [1];                                     //1행 1열은 1을 초기값으로 준다.
                     var dim = Number(prompt("파스칼의 삼각형의 높이:", ""));  //promt
-                    document.write(defa);
+                    document.getElementById("draw_area").innerHTML = defa;
 
                     if (dim >= 2) {
                         new_things = new_row(defa);
-                        document.write("<br>" + new_things);
+                        document.getElementById("draw_area").innerHTML = "<br>" + new_things ;
 
                         num = 2;
                         while (num < dim) {
                             new_things = new_row(new_things);
-                            document.write("<br>" + new_things);
+                            document.getElementById("draw_area").innerHTML = "<br>" + new_things ;
                             num += 1;
                         }
                     }
