@@ -36,7 +36,8 @@
         // 그리는 기능의 함수
         function pascals() {
             var size = document.getElementById("size").value;
-
+            var dim = size;
+            var defa = [1];
                     function new_row(prev_row) {
                         var pascal = [];
                         var len = prev_row.length;
@@ -52,18 +53,20 @@
                         return pascal;
                     }
 
-                    var defa = [1];                                     //1행 1열은 1을 초기값으로 준다.
-                    document.getElementById("draw_area").innerHTML = defa;
 
-                    if (dim >= 2) {
-                        new_things = new_row(defa);
-                        document.getElementById("draw_area").innerHTML = "<br>" + new_things ;
+                    document.getElementById("draw_area").innerText = 1;
+
+                    if (dim >= 2){
+                        var new_things = new_row(defa);
+
+                        document.getElementById("draw_area").innerHTML = new_things;
 
                         num = 2;
                         while (num < dim) {
                             new_things = new_row(new_things);
-                            document.getElementById("draw_area").innerHTML = "<br>" + new_things ;
-                            num += 1;
+
+                            document.getElementById("draw_area").innerHTML = new_things;
+                            num++;
                         }
                     }
                 }
