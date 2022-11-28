@@ -13,35 +13,28 @@
         function transform() {
             var digit = document.getElementById("digit").value;
 
-                if (digit.length == 4 && isFinite(digit)) {
-                        var digit = parseInt(digit, 2);
+            var bin2 = parseInt(digit, 2);
 
-                    if (digit <= 9 && this.digit >= 0) {
-                        document.getElementById("hexanum").innerHTML = digit;
+            if (bin2 <= 9 && bin2 >= 0) {
+                document.getElementById("hexanum").value = bin2;
 
+            } else if (bin2 > 9 && bin2 < 16) {
 
-                    } else if (this.digit > 9 && this.digit < 16) {
-                        alphabet = ['A', 'B', 'C', 'D', 'E', 'F'];
+                alphabet = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-                        for (var i = 0; i <= 5; i++) {
-                            if (digit - 10 == i)
-                                document.getElementById("hexanum").innerHTML = alphabet[digit - 10];
-
-                        }
-                    } else {
-                        document.getElementById("hexanum").innerHTML = 'X'
-                    }
+                for (var i = 0; i <= 5; i++) {
+                    if (bin2 - 10 == i)
+                        document.getElementById("hexanum").value = alphabet[bin2 - 10];
                 }
-                else {
-                    document.getElementById("hexanum").innerHTML = 'X'
-                }
-        }
+            } else {
+                document.getElementById("hexanum").value = '다시 입력하세요.'
+            }
+   }
+
 
         // id가 "size"인 입력 요소의 값을 읽어 해당 크기의 파스칼 삼각형을 id가 'draw_area'인 영역에
         // 그리는 기능의 함수
-        function pascals() {
 
-        }
 
 
 
@@ -54,23 +47,21 @@
 <div class="container-sm mt-5">
     <div class="h3">2진수 변환기</div>
     <div class="mb-3">
+
+
         <label class="form-label text-primary"> 2진수:
-            <input type="text" id="digit" size="20">
+            <input type="text" id="digit" size="20"> </input>
         </label>
+
+
         <button type="button" class="btn btn-dark" onclick="transform()"> ===> </button>
+
+
         <label class="form-label text-primary"> 16진수:
-            <input type="text" id="hexanum" size="20" readonly value="">
+            <input type="text" id="hexanum" size="20" readonly value=""> </input>
         </label>
-    </div>
-    <hr>
-    <div class="h3">파스칼 삼각형</div>
-    <div class="mb-3">
-        <label class="form-label text-primary"> 삼각형 높이
-            <input type="number" id="size" min="1" max="20" step="1" value="1">
-            <button type="button" class="btn btn-success" onclick="pascals()">그리기</button>
-        </label>
-    </div>
-    <div class="text-bg-secondary" id="draw_area">
+
+
     </div>
 </div>
 
