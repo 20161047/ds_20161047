@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20161047_이시은_과제03_01</title>
+
+<script>
+        function transform() {
+            var digit = document.getElementById("digit").value;
+            var message = document.getElementById("hexanum").value;
+
+            document.getElementById("hexanum").innerHTML = message;
+
+
+
+                if (digit.length == 4 && isFinite(digit)) {
+                    digit = parseInt(this.digit, 2);
+
+                    if (this.digit <= 9 && this.digit >= 0) {
+                        message = digit;
+
+                    } else if (this.digit > 9 && this.digit < 16) {
+                        alphabet = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+                        for (var i = 0; i <= 5; i++) {
+                            if (digit - 10 == i)
+                                message = alphabet[digit - 10];
+                        }
+                    } else {
+                        message = '4자리의 2진수가 아닙니다. 다시 입력하세요.'
+                    }
+                }
+                else {
+                    message = '4자리의 2진수가 아닙니다. 다시 입력하세요.'
+                }
+
+    }
+
+</script>
+
+</head>
+<body>
+<script>
+    <form>
+    <div className="container-sm mt-5">
+        <div className="h3">2진수 변환기</div>
+        <div className="mb-3">
+            <label className="form-label text-primary"> 2진수:
+                <input type="text" id="digit" size="20">  </input>
+            </label>
+            <button type="button" className="btn btn-dark" onClick="transform()"> ===> </button>
+            <label className="form-label text-primary"> 16진수:
+                <input type="text" id="hexanum" size="20" readOnly value="">  </input>
+            </label>
+        </div>
+    </div>
+        </form>
+        <hr>
+</script>
+</body>
+</html>
