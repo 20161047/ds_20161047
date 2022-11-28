@@ -36,6 +36,7 @@
         // 그리는 기능의 함수
         function pascals() {
             var size = document.getElementById("size").value;
+            var prev_row = parseInt(size);
 
                     function new_row(prev_row) {
                         var pascal = [];
@@ -53,7 +54,7 @@
                     }
 
                     var defa = [1];
-                    var dim = size;
+                    var dim = parseInt(size);
                     document.getElementById("draw_area").innerHTML = defa;
 
                     if (dim >= 2) {
