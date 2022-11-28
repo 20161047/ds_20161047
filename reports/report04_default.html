@@ -54,18 +54,18 @@
                     }
 
 
-                    document.getElementById("draw_area").innerText = 1;
+                    document.getElementById("draw_area").innerHTML = [1];
 
                     if (dim >= 2){
                         var new_things = new_row(defa);
 
-                        document.getElementById("draw_area").innerHTML = new_things;
+                        document.getElementById("draw_area").innerHTML += "<br>" + new_things;
 
                         num = 2;
                         while (num < dim) {
                             new_things = new_row(new_things);
 
-                            document.getElementById("draw_area").innerHTML = new_things;
+                            document.getElementById("draw_area").innerHTML += "<br>" + new_things;
                             num++;
                         }
                     }
