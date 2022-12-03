@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자바 스크립트 언어 일반</title>
+</head>
+<body>
+<h2>자바 스크립트 연습</h2>
+<hr>
+
+<script>
+    var a = 1;
+    var b = a++;
+    var c = 1;
+    var d = ++c;
+
+    document.write('<p>변수 a의 값: '+ a + '</p>');
+    document.write('<p>변수 b의 값: '+ b + '</p>' + '후치 연산자는 우선순위가 가장 낮기 때문에, a와 b의 값이 동일하지 않다.');
+    document.write('<p>변수 c의 값: '+ c + '</p>');
+    document.write('<p>변수 d의 값: '+ d + '</p>' + '전치 연산자는 우선순위가 가장 높기 때문에, c와 d의 값이 동일하다.');
+
+    var greeting1 = 'hello!' ;
+    var greeting2 = 'welcome' ;
+
+    str1 = greeting1 + greeting2 ;
+    document.write('<p>' + str1 + '</p>') ;
+
+    str2 = greeting1 + 2022 ;
+    document.write('<p>' + str2 + '</p>' + '문자열과 숫자열이 증감 연산자로 묶여도, 자바 스크립트에서는 오류가 아니다.') ;
+
+
+    console.log('디버깅할 때 : 콘솔에서는 tag가 나타나지 않기 때문에, 태그는 없애고 변수만 출력되게 한다.')
+    console.log('변수 a의 값: '+ a);
+    console.log('변수 b의 값: '+ b + '후치 연산자는 우선순위가 가장 낮기 때문에, a와 b의 값이 동일하지 않다.');
+    console.log('변수 c의 값: '+ c);
+    console.log('변수 d의 값: '+ d + '전치 연산자는 우선순위가 가장 높기 때문에, c와 d의 값이 동일하다.');
+    console.log(str1) ;
+    console.log( str2 + '문자열과 숫자열이 증감 연산자로 묶여도, 자바 스크립트에서는 오류가 아니다.') ;
+
+
+
+</script>
+
+
+</body>
+</html>
