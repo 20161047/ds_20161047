@@ -6,8 +6,18 @@
 
   <script>
     var orderpizza = function (topping) {
-      document.write('<p> 토핑이 ' + topping + '인 피자를 주문하셨습니다.')
+      if (topping == undefined) {
+        topping = '치즈' ;
+      }
+      document.write('<p> 토핑이 ' + topping + '인 피자를 주문하셨습니다. </p>') ;
     }
+    var orderpizza2 = function (topping2) {
+      if (topping2 == undefined) {
+        topping2 = '치즈' ;
+      }
+      document.write('<p> 토핑이 ' + topping2 + '인 피자를 주문하셨습니다. </p>') ;
+    }
+
   </script>
 
 </head>
@@ -16,7 +26,9 @@
 <hr>
 <script>
   var topping = prompt('어떤 토핑을 원하세요? : ');
-  order.pizza(topping) ;
+  orderpizza(topping) ;
+  var topping2 = prompt('어떤 토핑을 원하세요?_기본값 없으면 : ');
+  orderpizza2() ;
 </script>
 </body>
 </html>
