@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule</title>
+
+    <style>
+
+html {
+	-webkit-print-color-adjust: exact;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+
+</style></head>
+
+<body>
+
+<div class="page-body">
+    <table class="collection-content">
+        <thead>
+            <tr>
+                <th>날짜</th>
+                <th>일정</th>
+                <th>상태</th>
+                <th>유형</th>
+                <th>상세</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><time>@January 12, 2023</time></td>
+                <td class="cell-title">병원(오후 03:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-green">
+                    <div class="status-dot status-dot-color-green"></div>Not started</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 29, 2022 → January 2, 2023</time></td>
+                <td><span class="icon">🟣</span>정시 원서 접수</td>
+                <td><span class="status-value select-value-color-green">
+                    <div class="status-dot status-dot-color-green"></div>Not started</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td class><time>@December 29, 2022 → December 30, 2022</time></td>
+                <td class="cell-title"><span class="icon">🐝</span>하윤</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-green">
+                    <div class="status-dot status-dot-color-green"></div>Not started</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td class><time>@December 28, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>전략 기획서 제출 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-blue">
+                    <div class="status-dot status-dot-color-blue"></div>진행중</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">공모전</td>
+            </tr>
+
+            <tr>
+                <td class><time>@December 28, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-blue">
+                    <div class="status-dot status-dot-color-blue"></div>진행중</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td></tr><tr id="6299903c-632e-4e3a-ba51-3c4caa776451">
+                <td class="cell-B=sO"><time>@December 26, 2022</time></td>
+                <td class="cell-title">강보석 정시 상담(오후 07:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                        <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 26, 2022</time></td>
+                <td class="cell-title">김정수 정시 상담(오후 03:30)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 26, 2022</time></td>
+                <td class="cell-title">윤혜성 정시 상담(오전 10:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 23, 2022 → December 26, 2022</time></td>
+                <td class="cell-title">공모전 : 감성분석 및 군집화</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-blue">개인</span></td>
+                <td class="cell-U;od">공모전</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 22, 2022</time></td>
+                <td class="cell-title">공모전 : 데이터 전처리</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-blue">개인</span></td>
+                <td class="cell-U;od">공모전</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 22, 2022</time></td>
+                <td class="cell-title">병원(오후 01:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 21, 2022</time></td>
+                <td class="cell-title">공모전 : 데이터 크롤링</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-blue">개인</span></td>
+                <td class="cell-U;od">공모전</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 20, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>공모전 줌 회의(오후 03:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">공모전</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 19, 2022</time></td>
+                <td class="cell-title">술 약속</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">상수역</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 19, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>회귀분석 기말고사</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">대학원 307(공학계산기 지참)</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 16, 2022</time></td>
+                <td class="cell-title">윤혜성 정시 상담(13:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 15, 2022</time></td>
+                <td class="cell-title">윤혜성 정시 상담(21:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 14, 2022 → December 18, 2022</time></td>
+                <td class="cell-title">OCU 성적 확인 및 성적이의신청</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 14, 2022 → December 18, 2022</time></td>
+                <td class="cell-title"><span class="icon">🥊</span>회귀 공부</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-pink">공부</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 14, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>수통 기말고사(오후 06:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">인문관 B202, B203(공학계산기, 노트북 지참)</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 13, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>웹프 기말고사(오전 10:30)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 12, 2022 → December 13, 2022</time></td>
+                <td class="cell-title"><span class="icon">🏠</span>레지던스 with 초은</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">서울 중구 퇴계로 334</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 12, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>영과기 기말고사(오전 09:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 10, 2022 → December 11, 2022</time></td>
+                <td class="cell-title"><span class="icon">🚜</span>영과기 공부</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-pink">공부</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 10, 2022 → December 12, 2022</time></td>
+                <td class="cell-title"><span class="icon">🚗</span>웹프 공부</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-pink">공부</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 8, 2022 → December 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">🚙</span>수통 공부</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-pink">공부</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 8, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>데베응 기말고사</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">숭인관 609(노트북 지참)</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 7, 2022</time></td>
+                <td class="cell-title"><span class="icon">😅</span>혜성이가 학원 알바</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 5, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>회귀 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 5, 2022</time></td>
+                <td class="cell-title">약국</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">서울 양천구 목동로 203</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 4, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 4, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>OCU 기말고사</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">60분</td>
+            </tr>
+
+            <tr>
+                <td><time>@December 3, 2022</time></td>
+                <td class="cell-title"><span class="icon">🎊</span>엄마 퇴원</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-blue">개인</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@December 1, 2022 → December 1, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>데베응 레포트 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 29, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 28, 2022 → December 2, 2022</time></td>
+                <td class="cell-title"><span class="icon">😅</span>혜성이가 학원 알바</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od">학원</td></tr>
+
+            <tr>
+                <td><time>@November 28, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>회귀분석 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 28, 2022</time></td>
+                <td class="cell-title">조권익 교수님 면담(오후 03:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">인문관 B513</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 27, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 25, 2022 → November 26, 2022</time></td>
+                <td class="cell-title">민성, 선우 학원</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 22, 2022 → November 24, 2022</time></td>
+                <td class="cell-title"><span class="icon">🤪</span>학원 휴무</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td><td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 22, 2022</time></td>
+                <td class="cell-title"><span class="icon">🧿</span>엄마 수술</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td><td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 22, 2022</time></td>
+                <td class="cell-title">리더쉽 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 21, 2022</time></td>
+                <td class="cell-title"><span class="icon">💧</span>엄마 입원</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 21, 2022</time></td>
+                <td class="cell-title">민성 학원</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od">학원</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 21, 2022 → December 3, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔵</span>서울대학교 병원(면회 오후 7:00~8:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od">평일 19:00-20:00, 주말 10:00-11:00, 19:00-20:00 / 면회객은 입원환자 1인당 1인으로 제한</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 20, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 20, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>OCU 중간 대체 레포트 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td></tr>
+
+            <tr>
+                <td><time>@November 20, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>영과기 중간 대체 레포트 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 20, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 18, 2022 → November 19, 2022</time></td>
+                <td class="cell-title"><span class="icon">🐝</span>하윤</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 18, 2022</time></td>
+                <td class="cell-title"><span class="icon">😷</span>엄마 코로나 검사</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od">PCR</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 17, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>데베응 온강 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 17, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>수능</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td><td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 16, 2022</time></td>
+                <td class="cell-title">강서교육청</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 15, 2022</time></td>
+                <td class="cell-title">맥북 수리(오후 04:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od">IFC MALL, L1</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 15, 2022</time></td>
+                <td class="cell-title">리더쉽 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+
+            <tr>
+                <td><time>@November 13, 2022</time></td>
+                <td class="cell-title">영과기 댓글 토론 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 13, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 12, 2022</time></td>
+                <td class="cell-title"><span class="icon">📌</span>진성, 혜성 국어 과외</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-purple">과외</span><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td class="cell-B=sO"><time>@November 11, 2022</time></td>
+                <td class="cell-title"><span class="icon">🐝</span>하윤(오전 10:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">🦷</span>치과(오전 10:20)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od">서울특별시 서대문구 신촌로75 2층</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 8, 2022</time></td>
+                <td class="cell-title">엄마 병원(오후 03:15)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 8, 2022</time></td>
+                <td class="cell-title">맥북 수리(오후 08:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od">IFC MALL, L1</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 8, 2022</time></td>
+                <td class="cell-title">리더쉽 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 7, 2022</time></td>
+                <td class="cell-title">김동건 교수님 면담(오후 03:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">인문관 B512</td>
+            </tr>
+
+            <tr>
+                <td><time>@November 6, 2022</time></td>
+                <td class="cell-title">맥북 수리(오전 10:35)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-brown">예약</span></td>
+                <td class="cell-U;od">IFC MALL, L1</td>
+            </tr>
+
+            <tr>
+                <td class="cell-B=sO"><time>@November 6, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 5, 2022</time></td>
+                <td class="cell-title"><span class="icon">📌</span>진성, 혜성 국어 과외</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-purple">과외</span><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@November 1, 2022</time></td>
+                <td class="cell-title">술 약속</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-yellow">약속</span></td>
+                <td class="cell-U;od">마포역</td>
+            </tr>
+
+            <tr>
+                <td><time>@October 30, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 29, 2022</time></td>
+                <td class="cell-title"><span class="icon">📌</span>진성, 혜성 국어 과외</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-purple">과외</span><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td></tr>
+
+            <tr>
+                <td><time>@October 26, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟨</span>영과기 수업</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td><td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 26, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>수통 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 26, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>수통 중간고사(18:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">인문관 A401, A402(공학계산기, 노트북 지참)</td>
+            </tr>
+
+            <tr>
+                <td><time>@October 25, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟨</span>회귀분석 수업</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 25, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>웹프 중간고사(10:30)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 24, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>수통 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 24, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>영과기 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 24, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>회귀분석 중간고사(16:30)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">인문관 A401(공학계산기 지참)</td>
+            </tr>
+
+            <tr>
+                <td><time>@October 23, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 23, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>OCU 중간고사</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">60분</td>
+            </tr>
+
+            <tr>
+                <td><time>@October 20, 2022</time></td>
+                <td class="cell-title"><span class="icon">🟣</span>데베응 중간고사(오후 12:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-green">시험</span></td>
+                <td class="cell-U;od">숭인관 609</td>
+            </tr>
+
+            <tr>
+                <td><time>@October 19, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 18, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>회귀분석 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 16, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 15, 2022</time></td>
+                <td class="cell-title">국어학원 아르바이트(출근 16:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 14, 2022</time></td>
+                <td class="cell-title"><span class="icon">📌</span>진성, 혜성 국어 과외</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-purple">과외</span><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 11, 2022</time></td>
+                <td class="cell-title">리더쉽 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>영과기 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>회귀분석 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>수통 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 10, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>영과기 온라인 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 9, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+
+            <tr>
+                <td><time>@October 9, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td></tr>
+
+            <tr>
+                <td><time>@October 8, 2022</time></td>
+                <td class="cell-title">국어학원 아르바이트(출근 16:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 7, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>웹프 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 6, 2022</time></td>
+                <td class="cell-title"><span class="icon">📌</span>진성, 혜성 국어 과외</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-purple">과외</span><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 4, 2022</time></td>
+                <td class="cell-title"><span class="icon">🔴</span>회귀분석 과제 마감</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 4, 2022</time></td>
+                <td class="cell-title">리더쉽 강의</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span><span class="selected-value select-value-color-gray">온강</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 3, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>수통 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td><td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 3, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>회귀분석 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 3, 2022</time></td>
+                <td class="cell-title"><span class="icon">⬛</span>영과기 휴강</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 2, 2022</time></td>
+                <td class="cell-title">OCU 퀴즈</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-red">과제</span></td>
+                <td class="cell-U;od"></td>
+            </tr>
+
+            <tr>
+                <td><time>@October 1, 2022</time></td>
+                <td class="cell-title">국어학원 아르바이트(출근 16:00)</td>
+                <td class="cell-Q{<X"><span class="status-value select-value-color-gray">
+                    <div class="status-dot status-dot-color-gray"></div>완료</span></td>
+                <td class="cell-jFSX"><span class="selected-value select-value-color-orange">알바</span></td>
+                <td class="cell-U;od"></td></tr>
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
